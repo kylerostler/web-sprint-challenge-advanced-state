@@ -5,11 +5,11 @@ import axios from 'axios'
 
 export function Quiz(props) {
   const { quiz } = props
-  console.log(quiz)
+  console.log(props)
   // useEffect to get the initial quiz
   useEffect(() => {
     props.fetchQuiz()
-  }, [props.state])
+  }, [])
   
   return (
     <div id="wrapper">
@@ -19,7 +19,7 @@ export function Quiz(props) {
           <>
             <h2>{quiz.question}</h2>
 
-              {/* {selected?<div className="answer selected">
+              {props.selectedAnswer?<div className="answer selected">
                 {quiz.answers[0].text}
                 <button>
                   SELECTED
@@ -28,12 +28,12 @@ export function Quiz(props) {
               :
               <div className="answer">
                 {quiz.answers[0].text}
-                <button>
+                <button onClick={() => props.selectAnswer(props.selectedAnswer)}>
                   Select
                 </button>
               </div>}
 
-              {selected?<div className="answer selected">
+              {props.selectedAnswer?<div className="answer selected">
                 {quiz.answers[1].text}
                 <button>
                   SELECTED
@@ -42,10 +42,10 @@ export function Quiz(props) {
               :
               <div className="answer">
                 {quiz.answers[1].text}
-                <button>
+                <button onClick={() => props.selectAnswer(props.selectedAnswer)}>
                   Select
                 </button>
-              </div>} */}
+              </div>}
 
             <button id="submitAnswerBtn">Submit answer</button>
           </>

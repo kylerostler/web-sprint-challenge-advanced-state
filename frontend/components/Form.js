@@ -5,12 +5,16 @@ import * as actionCreators from '../state/action-creators'
 export function Form(props) {
 
   const onChange = evt => {
-
+    const { value } = evt.target
+    props.inputChange(value)
   }
 
   const onSubmit = evt => {
-
+    evt.preventDefault()
+    props.postQuiz();
   }
+
+console.log(props)
 
   return (
     <form id="form" onSubmit={onSubmit}>

@@ -1,5 +1,6 @@
 // ❗ You don't need to add extra reducers to achieve MVP
 import { combineReducers } from 'redux'
+import { inputChange } from './action-creators'
 import * as types from './action-types'
 
 const initialWheelState = 0
@@ -36,7 +37,7 @@ const initialSelectedAnswerState = null
 function selectedAnswer(state = initialSelectedAnswerState, action) {
   switch (action.type) {
     case types.SET_SELECTED_ANSWER:
-      if ()
+      return action.payload
     default:
       return state
   }
@@ -53,7 +54,14 @@ const initialFormState = {
   newFalseAnswer: '',
 }
 function form(state = initialFormState, action) {
-  return state
+  switch (action.type) {
+    case types.RESET_FORM:
+      return initialFormState
+    case types.INPUT_CHANGE:
+      return action.payload
+    default:
+      return state
+  }
 }
 
 export default combineReducers({ wheel, quiz, selectedAnswer, infoMessage, form })

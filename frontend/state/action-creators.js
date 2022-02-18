@@ -23,8 +23,8 @@ export function setQuiz(quiz) {
       {answer_id: quiz.answers[1].answer_id, text: quiz.answers[1].text}] } })
  }
 
-export function inputChange(value) {
-  return ({ type: types.INPUT_CHANGE, payload: value})
+export function inputChange(value, inputId) {
+return ({ type: types.INPUT_CHANGE, payload: { value: inputId.value, inputId: inputId }})
  }
 
 export function resetForm() { 

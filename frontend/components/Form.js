@@ -5,8 +5,8 @@ import * as actionCreators from '../state/action-creators'
 export function Form(props) {
 
   const onChange = evt => {
-    const { value } = evt.target
-    props.inputChange(value)
+    const { value } = evt.target.value
+    props.inputChange(value, evt.target)
   }
 
   const onSubmit = evt => {

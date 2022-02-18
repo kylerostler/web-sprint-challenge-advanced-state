@@ -1,19 +1,23 @@
-import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE } from "./action-types"
+import * as types from "./action-types"
 
 // ❗ You don't need to add extra action creators to achieve MVP
 export function moveClockwise() { 
-  return ({ type: MOVE_CLOCKWISE })
+  return ({ type: types.MOVE_CLOCKWISE })
 }
 
 export function moveCounterClockwise() { 
-  return ({ type: MOVE_COUNTERCLOCKWISE })
+  return ({ type: types.MOVE_COUNTERCLOCKWISE })
 }
 
 export function selectAnswer() { }
 
 export function setMessage() { }
 
-export function setQuiz() { }
+export function setQuiz(quiz) {
+  return ({ type: types.SET_QUIZ_INTO_STATE, 
+    payload: { quiz_id: quiz.quiz_id, question: quiz.question, 
+      answers: [{answer_id: quiz.answers[0].answer_id, text: quiz.answers[0].text},{answer_id: quiz.answers[1].answer_id, text: quiz.answers[1].text}] } })
+ }
 
 export function inputChange() { }
 

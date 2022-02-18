@@ -5,12 +5,13 @@ import axios from 'axios'
 
 export function Quiz(props) {
   const { quiz } = props
-  console.log(props)
+  console.log(quiz)
   // useEffect to get the initial quiz
   useEffect(() => {
     axios.get('http://localhost:9000/api/quiz/next')
     .then(res => {
       console.log(res)
+      props.setQuiz(res.data)
     })
     .catch(err => {
       debugger

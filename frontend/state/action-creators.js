@@ -14,7 +14,9 @@ export function selectAnswer(id) {
   return ({ type: types.SET_SELECTED_ANSWER, payload: id })
  }
 
-export function setMessage() { }
+export function setMessage(message) {
+  return ({ type: types.SET_INFO_MESSAGE, payload: { infoMessage: message}})
+ }
 
 export function setQuiz(quiz) {
   return ({ type: types.SET_QUIZ_INTO_STATE, 
@@ -60,8 +62,7 @@ export function postQuiz(form) {
   return function (dispatch) {
     axios.post('http://localhost:9000/api/quiz/new', { form })
     .then(res => {
-      console.log(res)
-      // dispatch({ type: types.SET_INFO_MESSAGE, })
+      dispatch({ type: types.SET_INFO_MESSAGE, payload: res.data})
     })
     .catch(err => {
       debugger

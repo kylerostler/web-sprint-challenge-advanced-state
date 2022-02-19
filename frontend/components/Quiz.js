@@ -6,11 +6,13 @@ import axios from 'axios'
 export function Quiz(props) {
   const { quiz } = props
   console.log(props)
-  // useEffect to get the initial quiz
+  // need to get rid of useEffect and replace it with an 
+  // if else statement for if quiz is loaded
   useEffect(() => {
     props.fetchQuiz()
   }, [])
-  
+
+
   return (
     <div id="wrapper">
       {

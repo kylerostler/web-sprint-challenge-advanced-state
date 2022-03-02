@@ -4,9 +4,10 @@ import * as actionCreators from '../state/action-creators'
 
 export function Form(props) {
 
+  console.log(props)
   const onChange = evt => {
-    const { value } = evt.target
-    props.inputChange(value, evt.target.id)
+    const { value, id } = evt.target
+    props.inputChange({..., [id]: value})
   }
 
   const onSubmit = evt => {
@@ -14,7 +15,13 @@ export function Form(props) {
     props.postQuiz();
   }
 
-console.log(props)
+  const onDisabled = () => {
+    if(props.form.newQuestion.trim().length > 0 && props.form.newTrueAnswer.trim().length > 0 && props.form.newFalseAnswer.trim().length > 0) {
+      return false
+    } else {
+      return true
+    }
+  }
 
   return (
     <form id="form" onSubmit={onSubmit}>
@@ -22,7 +29,7 @@ console.log(props)
       <input maxLength={50} onChange={onChange} id="newQuestion" placeholder="Enter question" />
       <input maxLength={50} onChange={onChange} id="newTrueAnswer" placeholder="Enter true answer" />
       <input maxLength={50} onChange={onChange} id="newFalseAnswer" placeholder="Enter false answer" />
-      <button id="submitNewQuizBtn">Submit new quiz</button>
+      <button disabled={onDisabled()} id="submitNewQuizBtn">Submit new quiz</button>
     </form>
   )
 }

@@ -14,6 +14,14 @@ export function Quiz(props) {
 
   console.log(props)
 
+  function onDisabled() {
+    if(selectedAnswer){
+      return false
+    } else {
+      return true
+    }
+  }
+
   return (
     <div id="wrapper">
     { quiz ? <h2>{quiz.question}</h2> : <></>}
@@ -44,7 +52,7 @@ export function Quiz(props) {
         )
         : 'Loading next quiz...'
       }
-      { quiz ? <button id="submitAnswerBtn" onClick={() => props.postAnswer(quiz.quiz_id, selectedAnswer)}>Submit answer</button>
+      { quiz ? <button id="submitAnswerBtn" disabled={onDisabled()} onClick={() => props.postAnswer(quiz.quiz_id, selectedAnswer)}>Submit answer</button>
  : <></>}
     </div>
   )

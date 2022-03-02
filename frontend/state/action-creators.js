@@ -14,8 +14,8 @@ export function selectAnswer(id) {
   return ({ type: types.SET_SELECTED_ANSWER, payload: id })
  }
 
-export function setMessage(message) {
-  return ({ type: types.SET_INFO_MESSAGE, payload: { infoMessage: message}})
+export function setMessage(infoMessage) {
+  return ({ type: types.SET_INFO_MESSAGE, payload: infoMessage})
  }
 
 export function setQuiz(quiz) {

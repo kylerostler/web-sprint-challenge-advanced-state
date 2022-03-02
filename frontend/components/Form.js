@@ -7,7 +7,7 @@ export function Form(props) {
   console.log(props)
   const onChange = evt => {
     const { value, id } = evt.target
-    props.inputChange({..., [id]: value})
+    props.inputChange({...props.form, [id]: value})
   }
 
   const onSubmit = evt => {

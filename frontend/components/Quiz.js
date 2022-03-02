@@ -22,16 +22,16 @@ export function Quiz(props) {
 
   return (
     <div id="wrapper">
-    {/* <h2>{quiz.question}</h2> */}
+    { quiz ? <h2>{quiz.question}</h2> : <></>}
       {
         // quiz already in state? Let's use that, otherwise render "Loading next quiz..."
         quiz ? (
           quiz.answers.map(answer => {
             return (
-              (selectedAnswer ? (<>
+              (selectedAnswer===answer.answer_id ? (<>
                 <div className="answer selected" key={answer.answer_id}>
                 {answer.text}
-                <button>
+                <button onClick={() => props.selectAnswer(answer.answer_id)}>
                   SELECTED
                 </button>
                 </div>

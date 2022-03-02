@@ -37,14 +37,7 @@ const initialSelectedAnswerState = null
 function selectedAnswer(state = initialSelectedAnswerState, action) {
   switch (action.type) {
     case types.SET_SELECTED_ANSWER:
-      return state.map((answer) => {
-        let selectedAnswer = action.payload;
-        if (answer.answer_id === selectedAnswer) {
-          return selectedAnswer
-        } else {
-          return answer
-        }
-      })
+        return action.payload
     default:
       return state
   }

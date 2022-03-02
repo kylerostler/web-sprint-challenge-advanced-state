@@ -12,6 +12,10 @@ export function Quiz(props) {
     props.fetchQuiz()
   }, [])
 
+  const onSelect = evt => {
+    console.log(props)
+    props.selectAnswer()
+  }
 
   return (
     <div id="wrapper">
@@ -30,7 +34,7 @@ export function Quiz(props) {
               :
               <div className="answer">
                 {quiz.answers[0].text}
-                <button onClick={() => props.selectAnswer(props.selectedAnswer)}>
+                <button onClick={() => onSelect()}>
                   Select
                 </button>
               </div>}
@@ -44,7 +48,7 @@ export function Quiz(props) {
               :
               <div className="answer">
                 {quiz.answers[1].text}
-                <button onClick={() => props.selectAnswer(props.selectedAnswer)}>
+                <button onClick={() => onSelect()}>
                   Select
                 </button>
               </div>}

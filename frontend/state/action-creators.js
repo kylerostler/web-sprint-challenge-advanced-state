@@ -36,8 +36,6 @@ export function resetForm() {
 // ❗ Async action creators
 export function fetchQuiz() {
   return function (dispatch) {
-    dispatch({ type: types.SET_QUIZ_INTO_STATE, payload: null});
-
     axios.get('http://localhost:9000/api/quiz/next')
     .then(res => {
       dispatch({ type: types.SET_QUIZ_INTO_STATE, payload: res.data})

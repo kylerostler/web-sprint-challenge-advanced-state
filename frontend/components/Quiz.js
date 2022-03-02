@@ -12,8 +12,6 @@ export function Quiz(props) {
   }, [])
 
 
-  console.log(props)
-
   function onDisabled() {
     if(selectedAnswer){
       return false

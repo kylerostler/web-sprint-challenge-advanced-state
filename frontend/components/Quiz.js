@@ -5,18 +5,12 @@ import axios from 'axios'
 
 export function Quiz(props) {
   const { quiz, selectedAnswer } = props
-  console.log(props)
   // need to get rid of useEffect and replace it with an 
   // if else statement for if quiz is loaded
   useEffect(() => {
     props.fetchQuiz()
   }, [])
 
-  // const onSelect = evt => {
-  //   console.log(props)
-  //   const option = props.quiz.answers.answer_id
-  //   props.selectAnswer()
-  // }
 
   console.log(props)
 
@@ -48,43 +42,10 @@ export function Quiz(props) {
             )
           })
         )
-        // (
-        //   <>
-        //     <h2>{quiz.question}</h2>
-
-        //       {props.selectedAnswer?<div className="answer selected">
-        //         {quiz.answers[0].text}
-        //         <button>
-        //           SELECTED
-        //         </button>
-        //       </div>
-        //       :
-              // <div className="answer">
-              //   {quiz.answers[0].text}
-              //   <button onClick={() => onSelect()}>
-              //     Select
-              //   </button>
-              // </div>}
-
-        //       {props.selectedAnswer?<div className="answer selected">
-        //         {quiz.answers[1].text}
-        //         <button>
-        //           SELECTED
-        //         </button>
-        //       </div>
-        //       :
-        //       <div className="answer">
-        //         {quiz.answers[1].text}
-        //         <button onClick={() => onSelect()}>
-        //           Select
-        //         </button>
-        //       </div>}
-
-        //     <button id="submitAnswerBtn">Submit answer</button>
-        //   </>
-        // ) 
         : 'Loading next quiz...'
       }
+      { quiz ? <button id="submitAnswerBtn" onClick={() => props.postAnswer(quiz.quiz_id, selectedAnswer)}>Submit answer</button>
+ : <></>}
     </div>
   )
 }

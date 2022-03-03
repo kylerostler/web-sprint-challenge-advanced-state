@@ -8,7 +8,11 @@ export function Quiz(props) {
   // need to get rid of useEffect and replace it with an 
   // if else statement for if quiz is loaded
   useEffect(() => {
-    props.fetchQuiz()
+    if(quiz){
+      return null
+    }else {
+      props.fetchQuiz()
+    }
   }, [])
 
 
@@ -21,30 +25,30 @@ export function Quiz(props) {
   }
 
   return (
-    <div id="wrapper">
-    { quiz ? <h2>{quiz.question}</h2> : <></>}
+    <div id="wrapper" key="quizWrapper">
+    { quiz ? <h2 key="quizQuestion">{quiz.question}</h2> : <></>}
       {
         // quiz already in state? Let's use that, otherwise render "Loading next quiz..."
         quiz ? (
           quiz.answers.map(answer => {
             return (
-              (selectedAnswer===answer.answer_id ? (<>
+              (selectedAnswer===answer.answer_id ? (
                 <div className="answer selected" key={answer.answer_id}>
                 {answer.text}
                 <button onClick={() => props.selectAnswer(answer.answer_id)}>
                   SELECTED
                 </button>
                 </div>
-               </>)
+               )
                :
-               (<>
+               (
                 <div className="answer" key={answer.answer_id}>
                   {answer.text}
                   <button onClick={() => props.selectAnswer(answer.answer_id)}>
                     Select
                   </button>
                 </div>
-               </>))
+               ))
             )
           })
         )

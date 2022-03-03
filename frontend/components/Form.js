@@ -13,16 +13,16 @@ export function Form(props) {
 
   const onSubmit = evt => {
     evt.preventDefault()
-    props.postQuiz();
+    props.postQuiz(props.form);
   }
 
-  // const onDisabled = () => {
-  //   if(props.form.newQuestion.trim().length > 0 && props.form.newTrueAnswer.trim().length > 0 && props.form.newFalseAnswer.trim().length > 0) {
-  //     return false
-  //   } else {
-  //     return true
-  //   }
-  // }
+  const onDisabled = () => {
+    if(props.form.newQuestion.trim().length > 0 && props.form.newTrueAnswer.trim().length > 0 && props.form.newFalseAnswer.trim().length > 0) {
+      return false
+    } else {
+      return true
+    }
+  }
 
   return (
     <form id="form" onSubmit={onSubmit}>
@@ -30,7 +30,7 @@ export function Form(props) {
       <input maxLength={50} onChange={onChange} id="newQuestion" placeholder="Enter question" />
       <input maxLength={50} onChange={onChange} id="newTrueAnswer" placeholder="Enter true answer" />
       <input maxLength={50} onChange={onChange} id="newFalseAnswer" placeholder="Enter false answer" />
-      <button  id="submitNewQuizBtn">Submit new quiz</button>
+      <button disabled={onDisabled()} id="submitNewQuizBtn">Submit new quiz</button>
     </form>
   )
 }

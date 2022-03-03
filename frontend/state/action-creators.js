@@ -70,8 +70,8 @@ export function postQuiz(form) {
   return function (dispatch) {
     axios.post('http://localhost:9000/api/quiz/new', {question_text: form.newQuestion, true_answer_text: form.newTrueAnswer, false_answer_text: form.newFalseAnswer})
     .then(res => {
-      // dispatch({ type: types.SET_INFO_MESSAGE, payload: res.data.message})
-      console.log(res)
+      dispatch({ type: types.SET_INFO_MESSAGE, payload: {message: res.statusText}})
+      console.log(res.statusText)
     })
     .catch(err => {
       debugger

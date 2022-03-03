@@ -53,11 +53,11 @@ function infoMessage(state = initialMessageState, action) {
   }
 }
 
-const initialFormState = [{
+const initialFormState = {
   newQuestion: '',
   newTrueAnswer: '',
   newFalseAnswer: '',
-}]
+}
 
 function form(state = initialFormState, action) {
   switch (action.type) {
@@ -65,11 +65,11 @@ function form(state = initialFormState, action) {
       return action.payload
     case types.INPUT_CHANGE:
       if(action.payload.newQuestion){
-        return [...state, state.newQuestion = action.payload]
+        return ({...state, newQuestion: action.payload.value})
       }else if(action.payload.newTrueAnswer){
-        return [...state, state.newTrueAnswer = action.payload]
+        return ({...state, newTrueAnswer: action.payload.value})
       }else if(action.payload.newFalseAnswer){
-        return [...state, state.newFalseAnswer = action.payload]
+        return ({...state, newFalseAnswer: action.payload.value})
       }else{
         return state
       }

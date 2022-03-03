@@ -15,13 +15,13 @@ export function Form(props) {
     props.postQuiz();
   }
 
-  // const onDisabled = () => {
-  //   if(props.form.newQuestion.trim().length > 0 && props.form.newTrueAnswer.trim().length > 0 && props.form.newFalseAnswer.trim().length > 0) {
-  //     return false
-  //   } else {
-  //     return true
-  //   }
-  // }
+  const onDisabled = () => {
+    if(props.form.newQuestion.trim().length > 0 && props.form.newTrueAnswer.trim().length > 0 && props.form.newFalseAnswer.trim().length > 0) {
+      return false
+    } else {
+      return true
+    }
+  }
 
   return (
     <form id="form" onSubmit={onSubmit}>

@@ -70,7 +70,7 @@ export function postQuiz(form) {
   return function (dispatch) {
     axios.post('http://localhost:9000/api/quiz/new', {question_text: form.newQuestion, true_answer_text: form.newTrueAnswer, false_answer_text: form.newFalseAnswer})
     .then(res => {
-      dispatch({ type: types.SET_INFO_MESSAGE, payload: {message: res.statusText}})
+      dispatch({ type: types.SET_INFO_MESSAGE, payload: {message: `Congrats: "${res.data.question}" is a great question!`}})
     })
     .catch(err => {
       debugger

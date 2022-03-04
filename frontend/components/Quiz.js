@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../state/action-creators'
-import axios from 'axios'
 
 export function Quiz(props) {
   const { quiz, selectedAnswer } = props
-  // need to get rid of useEffect and replace it with an 
-  // if else statement for if quiz is loaded
+
   useEffect(() => {
     if(quiz){
       return null
@@ -28,7 +26,6 @@ export function Quiz(props) {
     <div id="wrapper" key="quizWrapper">
     { quiz ? <h2 key="quizQuestion">{quiz.question}</h2> : <></>}
       {
-        // quiz already in state? Let's use that, otherwise render "Loading next quiz..."
         quiz ? (
           quiz.answers.map(answer => {
             return (

@@ -1,31 +1,4 @@
-personal notes:
 
-actions needed:
-move_clockwise- adds 1 to wheel (pin) NO PAYLOAD
-
-move_counterclockwise- subtracts 1 from wheel (pin) NO PAYLOAD
-
-set_quiz_into_state- initializes new quiz question YES PAYLOAD (quiz_id: 'id', question: 'string', answers: [{answer_id: 'id', text: 'string'},{answer_id: 'id', text: 'string'}])
-
-set_info_message- displays message above quiz YES PAYLOAD ('string')
-
-set_selected_answer- selects which answer in the quiz is selected by the answers unique pin YES PAYLOAD ('id')
-
-input_change- adds input to input field YES PAYLOAD (inputId: 'newquestion', value: '-user inputted string-')
-
-reset_form- clears out input fields NO PAYLOAD
-
-
-
-Form has 3 fields:
-newquestion: 'string',
-newtrueanswer: 'string',
-newfalseanswer: 'string'
-
-submit answer button is posting? returns a payload from server
-submit new quiz button also returns a payload
-
-t
 # Sprint Challenge: Advanced State Management
 
 In this challenge, you will write the logic for [THIS APP](https://advanced-state-wheel.herokuapp.com/).

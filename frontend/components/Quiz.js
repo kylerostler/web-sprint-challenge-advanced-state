@@ -22,6 +22,19 @@ export function Quiz(props) {
     }
   }
 
+  // function shuffleAnswers(array) {
+  //   let i = array.length -1;
+  //   for(; i > 0; i--) {
+  //     const j = (Math.floor.random() * (i + 1));
+  //     const temp = array[i];
+  //     array[i] = array[j];
+  //     array[j] = temp;
+  //   }
+  //   return array;
+  // }
+
+  // const shuffledAnswersArray = shuffleAnswers(quiz.answers)
+  
   return (
     <div id="wrapper" key="quizWrapper">
     { quiz ? <h2 key="quizQuestion">{quiz.question}</h2> : <></>}

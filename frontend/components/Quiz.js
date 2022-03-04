@@ -22,25 +22,23 @@ export function Quiz(props) {
     }
   }
 
-  // function shuffleAnswers(array) {
-  //   let i = array.length -1;
-  //   for(; i > 0; i--) {
-  //     const j = (Math.floor.random() * (i + 1));
-  //     const temp = array[i];
-  //     array[i] = array[j];
-  //     array[j] = temp;
-  //   }
-  //   return array;
-  // }
+  function shuffleAnswers(array) {
+    let i = array.length -1;
+    for(; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
 
-  // const shuffledAnswersArray = shuffleAnswers(quiz.answers)
-  
   return (
     <div id="wrapper" key="quizWrapper">
     { quiz ? <h2 key="quizQuestion">{quiz.question}</h2> : <></>}
       {
         quiz ? (
-          quiz.answers.map(answer => {
+          shuffleAnswers(quiz.answers).map(answer => {
             return (
               (selectedAnswer===answer.answer_id ? (
                 <div className="answer selected" key={answer.answer_id}>
